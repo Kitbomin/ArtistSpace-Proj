@@ -1,1 +1,9 @@
-spring.application.name:ArtistSpace
+spring:
+  profiles:
+    active:
+#      -dev
+      - local
+
+file:
+  upload:
+    path: "D:/개인 프로젝트/ArtistSpace-proj/projImg"

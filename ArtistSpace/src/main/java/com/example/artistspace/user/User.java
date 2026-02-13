@@ -4,10 +4,12 @@ import com.example.artistspace.post.Post;
 import com.example.artistspace.enums.SocialType;
 import com.example.artistspace.enums.UserRole;
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,6 +30,8 @@ public class User {
     @Column(nullable = false, unique = true)
     private String nickname;
 
+    private String phoneNumber;
+
     private String profileImageUrl;
 
     @Enumerated(EnumType.STRING)
@@ -37,24 +41,26 @@ public class User {
 
     private LocalDate birthDate; // 미자 여부
 
+    private Long balance = 0L; // 정산 금액
+
     @Enumerated(EnumType.STRING)
     private SocialType socialType;
 
-    private String socialId;
+    private LocalDateTime createdAt = LocalDateTime.now();
 
-    private Long points = 0L;
-
-    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL)
-    private List<Post> posts = new ArrayList<>();
-
-
-
-
-    private LocalDate createdDate;
-
-
-
-
-
-
+    @Builder
+    public User(Long id, String email, String password, String nickname, String phoneNumber, String profileImageUrl, UserRole primaryBadge, String bio, LocalDate birthDate, Long balance, SocialType socialType, LocalDateTime createdAt) {
+        this.id = id;
+        this.email = email;
+        this.password = password;
+        this.nickname = nickname;
+        this.phoneNumber = phoneNumber;
+        this.profileImageUrl = profileImageUrl;
+        this.primaryBadge = primaryBadge;
+        this.bio = bio;
+        this.birthDate = birthDate;
+        this.balance = balance;
+        this.socialType = socialType;
+        this.createdAt = createdAt;
+    }
 }

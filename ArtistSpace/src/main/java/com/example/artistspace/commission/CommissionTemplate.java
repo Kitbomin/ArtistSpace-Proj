@@ -16,15 +16,7 @@ public class CommissionTemplate {
     @JoinColumn(name = "user_id")
     private User artist;
 
+    @Lob
     @Column(columnDefinition = "LONGTEXT")
-    private String guideLineHtml;
-
-    @Column(columnDefinition = "TEXT")
-    private String requestForm;
-
-    private Long Price;
-
-    private Integer expectedDays;
-
-    private LocalDateTime updatedAt = LocalDateTime.now();
+    private String contentHtml;
 }
