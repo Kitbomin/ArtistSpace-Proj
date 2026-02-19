@@ -1,4 +1,4 @@
-package com.example.artistspace.config;
+package com.example.artistspace._core.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
